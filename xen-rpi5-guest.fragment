@@ -1,0 +1,16 @@
+# RPi5 Xen guest kernel configuration fragment.
+# Enables the paravirtualized frontend drivers required for an unprivileged
+# Xen guest (domU) on the Raspberry Pi 5, and disables the dom0 (host) path
+# which is not needed (and is undesirable) in a guest.
+#
+# NOTE: the Xen HVC console symbol in the upstream/Linux kernel Kconfig is
+# CONFIG_HVC_XEN (drivers/tty/hvc/Kconfig), not CONFIG_XEN_HVC.
+
+CONFIG_XEN=y
+CONFIG_XEN_BLKDEV_FRONTEND=y
+CONFIG_XEN_NETDEV_FRONTEND=y
+CONFIG_HVC_XEN=y
+CONFIG_XEN_XENBUS_FRONTEND=y
+
+# This is a guest, not a Xen host/dom0.
+CONFIG_XEN_DOM0=n

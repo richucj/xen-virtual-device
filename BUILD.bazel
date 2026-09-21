@@ -94,6 +94,11 @@ _VIRT_AARCH64_MODULES = [
     "ambakmi.ko",
     "armmmci.ko",
     "clk-vexpress-osc.ko",
+    "coresight-etm4x.ko",
+    "coresight-funnel.ko",
+    "coresight-replicator.ko",
+    "coresight-trbe.ko",
+    "coresight.ko",
     "drm_dma_helper.ko",
     "kfifo_buf.ko",
     "nd_virtio.ko",
@@ -256,6 +261,7 @@ kernel_build(
         "virtual_device.fragment",
         "aarch64.fragment",
         "xenvm.aarch64.fragment",
+        "xen-rpi5-guest.fragment",
     ],
     visibility = [
         "//modules:__subpackages__",
@@ -267,12 +273,6 @@ kernel_module_group(
     name = "xen_virtual_device_aarch64_external_modules",
     srcs = [
         "//common-modules/xen-virtual-device/dma_buf_cma_heap:dma_buf_cma_heap",
-        "//modules/imagination/ddk/rogue_km:pvrsrvkm",
-        "//modules/renesas/disfwk_fe:disfwk_fe",
-        "//modules/renesas/rcar-mfis:rcar_mfis",
-        "//modules/renesas/rcar_gen5_rproc:rcar_gen5_rproc",
-        "//modules/renesas/pcie6_rcar_gen5_host:pcie6_rcar_gen5_host",
-        "//modules/renesas/camfwk_fe:camfwk_fe",
     ],
 )
 
